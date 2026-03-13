@@ -1,27 +1,25 @@
-import express from "express"
-import cors from "cors"
+import express from "express";
+import cors from "cors";
 
-import authRoutes from "./authRoutes"
-import patientRoutes from "./patientRoutes"
-import appointmentRoutes from "./appointmentRoutes"
-import prescriptionRoutes from "./prescriptionRoutes"
-import medicationRoutes from "./medicationRoutes"   // ADDED
+import patientRoutes from "./patientRoutes";
+import appointmentRoutes from "./appointmentRoutes";
+import prescriptionRoutes from "./prescriptionRoutes";
+import medicationRoutes from "./medicationRoutes";
+import authRoutes from "./authRoutes";
 
-const app = express()
+const app = express();
 
-app.use(cors())
-app.use(express.json())
+app.use(cors());
+app.use(express.json());
 
-app.use("/auth",authRoutes)
+app.use("/patients", patientRoutes);
+app.use("/appointments", appointmentRoutes);
+app.use("/prescriptions", prescriptionRoutes);
+app.use("/medications", medicationRoutes);
+app.use("/auth", authRoutes);
 
-app.use("/patients",patientRoutes)
+const PORT = process.env.PORT || 4002;
 
-app.use("/appointments",appointmentRoutes)
-
-app.use("/prescriptions",prescriptionRoutes)
-
-app.use("/medications",medicationRoutes)   // ADDED
-
-app.listen(4002,()=>{
-console.log("Server running on port 4002")
-})
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
