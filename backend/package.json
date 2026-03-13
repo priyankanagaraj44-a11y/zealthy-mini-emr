@@ -2,10 +2,11 @@
   "name": "zealthy-backend",
   "version": "1.0.0",
   "scripts": {
-    "start": "npx ts-node server.ts",
-    "dev": "ts-node server.ts",
-    "seed": "ts-node seed.ts"
-  },
+  "build": "tsc",
+  "start": "node dist/server.js",
+  "dev": "ts-node server.ts",
+  "seed": "ts-node seed.ts"
+},
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
